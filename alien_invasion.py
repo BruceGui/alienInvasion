@@ -6,9 +6,12 @@
 
 import sys
 import pygame
+import game_functions as gf
 
 from settings import Settings
+from pygame.sprite import Group
 from ship import Ship
+
 
 def run_game():
     """ initialize the game and create a surface object """
@@ -18,16 +21,20 @@ def run_game():
     screen = pygame.display.set_mode((game_settings.screen_width, game_settings.screen_height))
     pygame.display.set_caption('Alien_Invasion')
 
-    ship = Ship(screen)
+    ship = Ship(game_settings, screen)
+
+    # Create a Group to Store Bullet
+    bullets = Group()
+
     # Begin the main game loop
     while True:
         # Listen to event
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        gf.check_events(game_settings, screen, ship, bullets)
+
+        ship.update()
+
+        gf.update_bullet(bullets)
         # Let the newest surface to show
-        screen.fill(game_settings.bg_color)
-        ship.blitme()
-        pygame.display.flip()
+        gf.update_screen(game_settings, screen, ship, bullets)
 
 run_game()

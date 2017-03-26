@@ -13,3 +13,13 @@ class Settings():
         self.screen_width = 500
         self.screen_height = 400
         self.bg_color = (211, 34, 53)
+
+        # Ship moving speed
+        self.ship_speed_factor = 3.2
+
+        # Bullet Settings
+        self.bullet_speed_factor = 4.5
+        self.bullet_width = 4
+        self.bullet_height = 21
+        self.bullet_color = 45, 90, 78
+        self.bullet_allowed = 9
