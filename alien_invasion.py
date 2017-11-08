@@ -37,4 +37,5 @@ def run_game():
         # Let the newest surface to show
         gf.update_screen(game_settings, screen, ship, bullets)
 
-run_game()
+if __name__ == '__main__':
+    run_game()
